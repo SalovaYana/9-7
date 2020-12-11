@@ -5,7 +5,7 @@
 
 int gauss(double **mas, int n)
 {
-    int k = 0, ind, s = 1;
+    int k = 0, ind, zn= 1;
 
     while (k < n)
     {
@@ -35,7 +35,7 @@ int gauss(double **mas, int n)
             }
 
             if (k != ind)
-                s *= -1;
+                zn*= -1;
         }
 
         for (int i = k + 1; i < n; i++)
@@ -49,14 +49,14 @@ int gauss(double **mas, int n)
         }
         k++;
     }
-    return s;
+    return zn;
 }
 int main()
 {
     setlocale(LC_ALL, "Rus");
 
-    int n, s;
-    double d = 1;
+    int n, zn;
+    double det = 1;
 
     printf("Введите количество строк и столбцов матрицы n*n : ");
     scanf("%d", &n);
@@ -90,7 +90,7 @@ int main()
         printf("\n");
     }
 
-    s = gauss(mas, n);
+    zn= gauss(mas, n);
 
 
     printf("\nДиагональный вид : \n");
@@ -107,12 +107,12 @@ int main()
 
     for(int i = 0; i < n; i++)
      {
-        d *= mas[i][i];
+        det *= mas[i][i];
      }
 
-    d *= s;
+    det*= zn;
 
-    printf("\nОпределитель матрицы d = %lf", d);
+    printf("\nОпределитель матрицы det = %lf", det);
 
     return 0;
 }
